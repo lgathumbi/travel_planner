@@ -89,4 +89,4 @@ class ItineraryDestination(BaseModel):
     serialize_rules = ('-itinerary.itinerary_destinations', '-destination.itinerary_destinations')
 
     def __repr__(self):
-        return f"<Itinerary_Destination Itinerary {self.itinerary_id}, Destination {self.destination_id}>"
+        return f"<ItineraryDestination Itinerary {self.itinerary_id}, Destination {self.destination_id}>"
