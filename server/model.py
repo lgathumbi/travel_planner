@@ -53,7 +53,7 @@ class Itinerary(BaseModel):
     itinerary_destinations = db.relationship('ItineraryDestination', back_populates='itinerary', cascade='all, delete-orphan')
 
     destinations = association_proxy('itinerary_destinations', 'destination',
-                                 creator=lambda destination_obj: Itinerary_Destination(destination=destination_obj))
+                                 creator=lambda destination_obj: ItineraryDestination(destination=destination_obj))
 
 
     serialize_rules = ('-itinerary_destinations.itinerary', '-user.itineraries')
