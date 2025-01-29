@@ -1,9 +1,10 @@
 from app import app
-from model import db, Users, Itinerary, Destination, Itinerary_Destination
+from model import db, Users, Itinerary, Destination, ItineraryDestination
+from datetime import datetime
 
 with app.app_context():
 
-    Itinerary_Destination.query.delete()
+    ItineraryDestination.query.delete()
     Itinerary.query.delete()
     Users.query.delete()
     Destination.query.delete()
@@ -15,6 +16,7 @@ with app.app_context():
     users = [user1, user2, user3, user4]
 
     db.session.add_all(users)
+    db.session.commit()
 
     paris = Destination(name = "Paris", location = "France")
     tokyo = Destination(name = "Tokyo", location = "Japan")
@@ -23,21 +25,43 @@ with app.app_context():
     destinations = [paris, tokyo, new_york, london]
 
     db.session.add_all(destinations)
+    db.session.commit()
 
-    itinerary1 = Itinerary(title = "Pauline's European Adventure", start_date = "2025-02-01", end_date = "2025-02-10", user_id = user1.id)
-    itinerary2 = Itinerary(title = "Willy's Asian Adventure", start_date = "2025-03-20", end_date = "2025-03-30", user_id = user2.id)
-    itinerary3 = Itinerary(title = "Anthony's North America Adventure", start_date = "2025-04-10", end_date = "2025-04-20", user_id = user3.id)
-    itinerary4 = Itinerary(title = "Lea's UK Adventure", start_date = "2025-05-25", end_date = "2025-06-03", user_id = user4.id)
-    itineries = [itinerary1, itinerary2, itinerary3, itinerary4]
+    itinerary1 = Itinerary(
+        title="Pauline's European Adventure", 
+        start_date=datetime.strptime("2025-02-01", "%Y-%m-%d").date(), 
+        end_date=datetime.strptime("2025-02-10", "%Y-%m-%d").date(), 
+        user_id=user1.id
+    )
+    itinerary2 = Itinerary(
+        title="Willy's Asian Adventure", 
+        start_date=datetime.strptime("2025-03-20", "%Y-%m-%d").date(), 
+        end_date=datetime.strptime("2025-03-30", "%Y-%m-%d").date(), 
+        user_id=user2.id
+    )
+    itinerary3 = Itinerary(
+        title="Anthony's North America Adventure", 
+        start_date=datetime.strptime("2025-04-10", "%Y-%m-%d").date(), 
+        end_date=datetime.strptime("2025-04-20", "%Y-%m-%d").date(), 
+        user_id=user3.id
+    )
+    itinerary4 = Itinerary(
+        title="Lea's UK Adventure", 
+        start_date=datetime.strptime("2025-05-25", "%Y-%m-%d").date(), 
+        end_date=datetime.strptime("2025-06-03", "%Y-%m-%d").date(), 
+        user_id=user4.id
+    )
+    itineraries = [itinerary1, itinerary2, itinerary3, itinerary4]
 
-    db.session.add_all(itineries)
+    db.session.add_all(itineraries)
+    db.session.commit()
 
-    itinerary_destination1 = Itinerary_Destination(itinerary_id = itinerary1.id, destination_id = paris.id)
-    itinerary_destination2 = Itinerary_Destination(itinerary_id = itinerary1.id, destination_id = london.id)
-    itinerary_destinaton3 = Itinerary_Destination(itinerary_id = itinerary2.id, destination_id = tokyo.id)
-    itinerary_destination4 = Itinerary_Destination(itinerary_id = itinerary3.id, destination_id = new_york.id)
-    itinerary_destination5 = Itinerary_Destination(itinerary_id = itinerary4.id, destination_id = london.id)
-    itinerary_destination6 = Itinerary_Destination(itinerary_id = itinerary4.id, destination_id = paris.id)
+    itinerary_destination1 = ItineraryDestination(itinerary_id = itinerary1.id, destination_id = paris.id)
+    itinerary_destination2 = ItineraryDestination(itinerary_id = itinerary1.id, destination_id = london.id)
+    itinerary_destinaton3 = ItineraryDestination(itinerary_id = itinerary2.id, destination_id = tokyo.id)
+    itinerary_destination4 = ItineraryDestination(itinerary_id = itinerary3.id, destination_id = new_york.id)
+    itinerary_destination5 = ItineraryDestination(itinerary_id = itinerary4.id, destination_id = london.id)
+    itinerary_destination6 = ItineraryDestination(itinerary_id = itinerary4.id, destination_id = paris.id)
 
     itinerary_destinations = [itinerary_destination1, itinerary_destination2, itinerary_destinaton3, itinerary_destination4, itinerary_destination5, itinerary_destination6]
 
