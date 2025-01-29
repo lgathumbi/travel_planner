@@ -185,8 +185,7 @@ def delete_itinerary_destination(itinerary_destination_id):
 
     db.session.delete(itinerary_destination)
     db.session.commit()
-    return jsonify({"message": "Itinerary-Destination link deleted successfully"}), 200
-
+    return jsonify({"message": "Itinerary-Destination link deleted successfully"}), 200        
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
