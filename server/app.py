@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy_serializer import SerializerMixin
-from flask_restful import Api, Resource
+from flask_restful import Api
 from model import db, Users, Itinerary, Destination, ItineraryDestination
 from datetime import datetime
 
