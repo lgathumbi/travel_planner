@@ -49,11 +49,12 @@ class Itinerary(BaseModel):
     end_date = db.Column(db.Date, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='itineraries')
+    user = db.relationship('Users', back_populates='itineraries')
     itinerary_destinations = db.relationship('ItineraryDestination', back_populates='itinerary', cascade='all, delete-orphan')
 
     destinations = association_proxy('itinerary_destinations', 'destination',
-                                     creator=lambda destination_obj: Itinerary_Destination(destination=destination_obj))
+                                 creator=lambda destination_obj: Itinerary_Destination(destination=destination_obj))
+
 
     serialize_rules = ('-itinerary_destinations.itinerary', '-user.itineraries')
 
@@ -73,8 +74,9 @@ class Destination(BaseModel):
 
     def __repr__(self):
         return f"<Destination {self.name}, Location {self.location}>"
+
     
-class Itinerary_Destination(BaseModel):
+class ItineraryDestination(BaseModel):
     __tablename__ = "itinerary_destinations"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
