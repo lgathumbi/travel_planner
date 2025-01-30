@@ -6,7 +6,6 @@ from sqlalchemy_serializer import SerializerMixin
 from flask_restful import Api
 from model import db, Users, Itinerary, Destination, ItineraryDestination
 from datetime import datetime
-from flask_cors import CORS
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -16,7 +15,6 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.json.compact = False
-CORS(app)
 
 db.init_app(app)
 migrate = Migrate(app, db)
