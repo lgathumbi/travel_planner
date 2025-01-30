@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from sqlalchemy_serializer import SerializerMixin
 from flask_restful import Api
 from model import db, Users, Itinerary, Destination, ItineraryDestination
+from flask_cors import CORS
 from datetime import datetime
 
 
@@ -20,6 +21,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 api = Api(app)
+CORS(app)
 
 @app.route("/")
 def index():
