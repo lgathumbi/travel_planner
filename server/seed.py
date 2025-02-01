@@ -45,13 +45,7 @@ with app.app_context():
         end_date=datetime.strptime("2025-04-20", "%Y-%m-%d").date(), 
         user_id=user3.id
     )
-    itinerary4 = Itinerary(
-        title="Lea's UK Adventure", 
-        start_date=datetime.strptime("2025-05-25", "%Y-%m-%d").date(), 
-        end_date=datetime.strptime("2025-06-03", "%Y-%m-%d").date(), 
-        user_id=user4.id
-    )
-    itineraries = [itinerary1, itinerary2, itinerary3, itinerary4]
+    itineraries = [itinerary1, itinerary2, itinerary3]
 
     db.session.add_all(itineraries)
     db.session.commit()
