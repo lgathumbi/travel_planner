@@ -12,6 +12,10 @@ load_dotenv()
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE_URL = os.environ.get("DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set")
 
 
 app = Flask(__name__)
