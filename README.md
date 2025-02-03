@@ -12,7 +12,7 @@
 - Contact
 
 ## View live site
-- Visit the deployed application at: [TravelItineraryPlanner](<https://vercel.com/lornas-projects-3cb7cfb8/vite-travel-planner/>)
+- Visit the deployed application at: [TravelItineraryPlanner](<https://vite-travel-planner-jljumf406-lornas-projects-3cb7cfb8.vercel.app//>)
 
 ## Live Api
 - You can access the live backend API at: [Live API URL](<https://travel-planner-16z2.onrender.com/>)
