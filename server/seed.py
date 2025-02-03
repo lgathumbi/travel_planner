@@ -54,10 +54,9 @@ with app.app_context():
     itinerary_destination2 = ItineraryDestination(itinerary_id = itinerary1.id, destination_id = london.id)
     itinerary_destinaton3 = ItineraryDestination(itinerary_id = itinerary2.id, destination_id = tokyo.id)
     itinerary_destination4 = ItineraryDestination(itinerary_id = itinerary3.id, destination_id = new_york.id)
-    itinerary_destination5 = ItineraryDestination(itinerary_id = itinerary4.id, destination_id = london.id)
-    itinerary_destination6 = ItineraryDestination(itinerary_id = itinerary4.id, destination_id = paris.id)
 
-    itinerary_destinations = [itinerary_destination1, itinerary_destination2, itinerary_destinaton3, itinerary_destination4, itinerary_destination5, itinerary_destination6]
+
+    itinerary_destinations = [itinerary_destination1, itinerary_destination2, itinerary_destinaton3, itinerary_destination4]
 
     db.session.add_all(itinerary_destinations)
 
